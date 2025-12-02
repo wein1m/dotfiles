@@ -1,0 +1,233 @@
+{
+  // Color theme & Icon
+  "workbench.colorTheme": "Aura Dracula Spirit (Soft)",
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.hidesExplorerArrows": true, // hide the ">" arrow for expand folder
+  "css.lint.unknownAtRules": "ignore",
+  "eslint.format.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "C_Cpp.vcFormat.newLine.beforeOpenBrace.block": "sameLine",
+  "C_Cpp.vcFormat.newLine.beforeOpenBrace.function": "sameLine",
+  "C_Cpp.vcFormat.newLine.beforeOpenBrace.lambda": "sameLine",
+  "C_Cpp.vcFormat.newLine.beforeOpenBrace.namespace": "sameLine",
+  "C_Cpp.vcFormat.newLine.beforeOpenBrace.type": "sameLine",
+  // "editor.defaultFormatter": "ms-vscode.cpptools-extension-pack",
+
+  // Workbench stuffs
+  "workbench.activityBar.location": "hidden", // the left bar (containinh file explorer, extensions, etc)
+  "workbench.editor.showTabs": "none", // tab bar
+  "errorLens.gutterIconsEnabled": true,
+  "workbench.statusBar.visible": false, // bottom bar (contains like encode, file type, error, etc)
+  "workbench.sideBar.location": "right",
+  "workbench.startupEditor": "terminal", // when you logged to vsc for the first time (it can be only the logo or smth)
+  "workbench.tips.enabled": false, // keybinds help on logged in below logo
+  "editor.minimap.enabled": false, // ".." after path on tab
+  "window.zoomLevel": 1,
+  "editor.stickyScroll.enabled": false,
+  "editor.guides.highlightActiveIndentation": true,
+  "editor.guides.bracketPairsHorizontal": true, // show horizontal brackets
+  "editor.guides.highlightActiveBracketPair": true,
+  "breadcrumbs.enabled": false,
+  "workbench.welcomePage.walkthroughs.openOnInstall": false,
+  "workbench.editor.alwaysShowEditorActions": false,
+
+  // Editor Stuffs
+  "editor.tabSize": 2,
+  "editor.smartSelect.selectSubwords": false,
+  "php.completion.namingConvention": "camelCase",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.lineNumbers": "on",
+  "editor.smoothScrolling": true,
+  "workbench.list.smoothScrolling": true,
+  "editor.folding": false,
+
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "files.trimTrailingWhitespace": true, // Remove trailing whitespaces after saving
+  "files.insertFinalNewline": true, // Add one line on end page
+  "editor.renderWhitespace": "selection",
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.overviewRulerBorder": false,
+  "editor.unicodeHighlight.allowedCharacters": {
+    "🐰": true // my precious cute bunnies should roam free in my projects~
+  },
+
+  // "editor.autoClosingBrackets": "never", // auto close bracket
+  // "editor.autoClosingQuotes": "never",
+
+  // Explorer
+  "workbench.tree.indent": 16, // indent of files tree on explorer (default=8)
+  "explorer.compactFolders": false, // idk how to explain, just try to make it true, and create nested folder with nothing inside except the folder itself
+  "workbench.tree.renderIndentGuides": "onHover",
+  "explorer.confirmDelete": false,
+
+  // TitleBar Things
+  "workbench.navigationControl.enabled": false,
+  "window.controlsStyle": "hidden",
+  "chat.commandCenter.enabled": false,
+  "workbench.layoutControl.enabled": false,
+  "window.menuBarVisibility": "compact",
+  "window.titleBarStyle": "custom",
+  "window.menuStyle": "custom",
+  "window.title": "🐰 Coding Date w/ Mai 🐰",
+
+  // TitleBar Colors
+  "workbench.colorCustomizations": {
+    "[Aura Dracula Spirit (Soft)]": {
+      "titleBar.activeBackground": "#191521",
+      "titleBar.activeForeground": "#f5ddff",
+      "titleBar.inactiveBackground": "#191521",
+      "titleBar.inactiveForeground": "#b89bcf",
+      "titleBar.border": "#191521"
+    },
+    // Hint
+    "parameterHints.hintBackground": "#37415180",
+    "parameterHints.hintForeground": "#f2d6fd"
+  },
+
+  // // Custom Style (switched to directly modifying vsc's css using pwsh)
+  // "custom-ui-style.stylesheet": {
+  //   // ".monaco-workbench .part.titlebar": "display: none !important;",
+  //   ".slider": "position: absolute !important; right: 1px !important; width: 2px !important; background: #bc9abc !important; left: auto !important;",
+  //   // i used to use this for the titleBar, but i just know that i can use workbench.colorCustomization, which is faster than external extensions.
+  //   // ".titlebar-drag-region": "background-color: #14111b !important; border-bottom: 2px solid #ff0000 !important;",
+  //   ".window-controls-container wco-enabled": "background-color: #191521 !important; margin-bottom: 10px !important;",
+  //   ".monaco-workbench .part.titlebar>.titlebar-container>.titlebar-center>.window-title>.command-center .action-item.command-center-center": "background-color: #191521 !important; border:none !important; letter-spacing: 1px !important",
+  //   ".monaco-workbench .part.titlebar>.titlebar-container>.titlebar-center>.window-title>.command-center .action-item.command-center-center .action-item.command-center-quick-pick .search-icon": "visibility: hidden !important;",
+  //   ".quick-input-widget": "top: 25vh !important",
+  //   ".quick-input-titlebar": "background: #100B15 !important",
+  //   ".title-actions": "display: none !important",
+  //   ".title.show-file-icons .label-container .monaco-icon-label.file-icon": "justify-content: center; padding: 0 !important"
+  // },
+
+  // Font
+  "custom-ui-style.font.sansSerif": "GeistMono Nerd Font",
+  // "editor.fontFamily": "FiraCode Nerd Font",
+  "editor.fontFamily": "Cascadia Code NF",
+  "editor.fontLigatures": true,
+  "editor.inlineSuggest.fontFamily": "GeistMono Nerd Font",
+  "editor.lineHeight": 25,
+  "editor.letterSpacing": 0.3,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "comment",
+        "settings": { "fontStyle": "italic" }
+      },
+      {
+        "scope": [
+          "keyword.control", // if, else, return, etc.
+          "storage", // function, var
+          "keyword" // generic fallback
+        ],
+        "settings": {
+          "foreground": "#c792ea",
+          "fontStyle": "bold"
+        }
+      },
+      {
+        "scope": "constant.numeric",
+        "settings": { "foreground": "#f694ff" }
+      },
+      {
+        "scope": "string",
+        "settings": { "foreground": "#f2d6fd" }
+      },
+      // Functions (user-defined)
+      {
+        "scope": ["entity.name.function", "support.function"],
+        "settings": { "foreground": "#82aaff", "fontStyle": "italic" }
+      }
+    ]
+  },
+
+  // Cursor & Some Terminal Config (these are based on my instincts only lmao)
+  "editor.cursorStyle": "line",
+  "editor.cursorBlinking": "expand",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.enableImages": true,
+  "terminal.integrated.enableVisualBell": true,
+  "terminal.integrated.tabs.enableAnimation": true,
+  "terminal.integrated.suggest.enabled": true,
+  "terminal.integrated.suggest.inlineSuggestion": "off",
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+
+
+  // Extensions Settings
+  "dotnet.codeLens.enableReferencesCodeLens": false, // enable reference (usefull for larger projects, but too bloated for small projects)
+  "animations.Install-Method": "Custom UI Style",
+  "custom-ui-style.external.imports": [],
+
+  "extensions.ignoreRecommendations": true,
+  "workbench.editorAssociations": {
+    "*.json": "default"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "animations.Enabled": true,
+
+  // EXTENSIONS: Parameter Hints
+  // "workbench.colorCustomizations": {
+  //       "parameterHints.hintBackground": "#37415180",
+  //       "parameterHints.hintForeground": "#f2d6fd"
+  //   },
+  "parameterHints.margin": "0 2",
+  "parameterHints.padding": "2 4",
+  "git.blame.editorDecoration.enabled": false,
+  "git.blame.statusBarItem.enabled": false,
+  "errorLens.enabled": false,
+
+  // Tailwindcss
+  "css.autoValidation": "Always",
+  "tailwindCSS.includeLanguages": {
+    "html": "html",
+    "javascript": "javascript",
+    "css": "css"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "php-cs-fixer.executablePath": "php-cs-fixer",
+  "php-cs-fixer.executablePathWindows": "", //eg: php-cs-fixer.bat
+  "php-cs-fixer.onsave": false,
+  "php-cs-fixer.rules": "@PSR12",
+  "php-cs-fixer.config": ".php-cs-fixer.php;.php-cs-fixer.dist.php;.php_cs;.php_cs.dist",
+  "php-cs-fixer.allowRisky": false,
+  "php-cs-fixer.pathMode": "override",
+  "php-cs-fixer.ignorePHPVersion": false,
+  "php-cs-fixer.exclude": [],
+  "php-cs-fixer.autoFixByBracket": false,
+  "php-cs-fixer.autoFixBySemicolon": false,
+  "php-cs-fixer.formatHtml": false,
+  "php-cs-fixer.documentFormattingProvider": true,
+  "[php]": {
+    "editor.defaultFormatter": "junstyle.php-cs-fixer"
+  },
+  "editor.codeActions.triggerOnFocusChange": true,
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "phpfmt.indent_with_space": 2,
+  "phpfmt.psr1": true,
+
+  "liveServer.settings.NoBrowser": true,
+  "C_Cpp.formatting": "clangFormat",
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "C_Cpp.clang_format_fallbackStyle": "{IndentWidth: 2, TabWidth: 2}",
+  "C_Cpp.vcFormat.indent.withinParentheses": "alignToParenthesis",
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "workbench.editor.editorActionsLocation": "hidden",
+  "vscode_custom_css.imports": [
+    "file:///c:/Users/toya/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.7/dist/updateHandler.js"
+  ]
+}
