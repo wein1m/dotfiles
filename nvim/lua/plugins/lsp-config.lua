@@ -1,0 +1,33 @@
+return {
+--   {
+--     "mason-org/mason.nvim",
+--     config = function()
+--       require("mason").setup()
+--     end
+--   },
+--   {
+--     "mason-org/mason-lspconfig.nvim",
+--     config = function()
+--       require("mason-lspconfig").setup({
+--         ensure_installed = { "lua_ls" }
+--       })
+--     end
+--   },
+--   {
+--     "neovim/nvim-lspconfig",
+--
+--     vim.lsp.enable("lua_ls"),
+--     vim.lsp.config("lua_ls", {
+--       settings = {
+--         ["lua_ls"] = {}
+--       }
+--     }),
+--     vim.keymap.set("n", "K", vim.lsp.buf.hover, {}),
+--     vim.keymap.set("n", "gd", vim.lsp.buf.definition, {}),
+--     vim.keymap.set({ "n", "v" }, "Ji", vim.lsp.buf.code_action, {}),
+--     --    config = function()
+--     --      local lspconfig = require("lspconfig")
+--     --      lspconfig.lua_ls.setup({})
+--     --    end
+--   },
+}
