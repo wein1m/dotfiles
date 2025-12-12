@@ -335,6 +335,87 @@ function clangd {
   }
 }
 
+function symlink {
+  Param(
+    [string]$path=".",
+    [string]$target=$(throw "forgot to add the target path, huh..")
+  )
+
+  try{
+    new-item -itemType SymbolicLink -path $path -target $target -errorAction Stop
+  }
+  catch {
+    write-host -foregroundColor Magenta "Maydayyy!!!🐰🐰 $($_.Exception.Message)"
+  }
+}
+
+function Get-FileMetaData 
+{ 
+    <# 
+    .SYNOPSIS 
+        Get-FileMetaData returns metadata information about a single file. 
+ 
+    .DESCRIPTION 
+        This function will return all metadata information about a specific file. It can be used to access the information stored in the filesystem. 
+    
+    .EXAMPLE 
+        Get-FileMetaData -File "c:\temp\image.jpg" 
+ 
+        Get information about an image file. 
+ 
+    .EXAMPLE 
+        Get-FileMetaData -File "c:\temp\image.jpg" | Select Dimensions 
+ 
+        Show the dimensions of the image. 
+ 
+    .EXAMPLE 
+        Get-ChildItem -Path .\ -Filter *.exe | foreach {Get-FileMetaData -File $_.Name | Select Name,"File version"} 
+ 
+        Show the file version of all binary files in the current folder. 
+    #> 
+ 
+    param(
+      [Parameter(Mandatory=$True)]
+      [string]$File
+    ) 
+ 
+    if(!(Test-Path -Path $File)) { 
+      write-host -foregroundColor Magenta "Invalid filename, bunny~"
+      break
+    } 
+ 
+    $tmp = Get-ChildItem $File 
+    $pathname = $tmp.DirectoryName 
+    $filename = $tmp.Name 
+ 
+    $hash = @{}
+    try{
+      $shellobj = New-Object -ComObject Shell.Application 
+      $folderobj = $shellobj.namespace($pathname) 
+      $fileobj = $folderobj.parsename($filename) 
+      
+      for($i=0; $i -le 294; $i++) { 
+        $name = $folderobj.getDetailsOf($null, $i);
+        if($name){
+          $value = $folderobj.getDetailsOf($fileobj, $i);
+          if($value){
+              $hash[$($name)] = $($value)
+          }
+        }
+      }
+    }
+    catch {
+      write-host -foregroundColor Magenta "Errorrrrrrrrrrr~ $($_.Exception.Message)"
+    }
+    finally{
+        if($shellobj){
+            [System.Runtime.InteropServices.Marshal]::ReleaseComObject([System.__ComObject]$shellobj) | out-null
+        }
+    }
+
+    return New-Object PSObject -Property $hash
+}
+
 # change the command using Set-Alias
 Set-Alias -Name "could u run the spotify, mai-san?" -Value spotify-themes
 
@@ -391,5 +472,5 @@ oh-my-posh init pwsh --config $style_path | Invoke-Expression
 
 fastfetch
 
-echo "TODO: change command table into hash map in our shell project"
+echo "TODO: change command table into hash map in our shell project; play with pwsh get-process from manpage"
 
