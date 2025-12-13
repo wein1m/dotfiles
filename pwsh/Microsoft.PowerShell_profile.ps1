@@ -17,10 +17,26 @@ function clearl {
 }
 
 
-function touch {
-  Param ( [string[]]$file )
-  "" > $file
+# function touch {
+#   Param ( [string[]]$file )
+#   "" > $file
+#
+# }
 
+function touch {
+  Param (
+    [Parameter(ValueFromRemainingArguments = $true)]
+    [string[]]$files
+  )
+
+  if ($files -le 0) {
+    write-host -foregroundColor Magenta "What? you want me to create a ghost file?.. give atleast one filename.. bad bunny."
+    break
+  }
+
+  foreach($file in $files) {
+    "" > $file
+  }
 }
 
 function open {
@@ -479,30 +495,16 @@ Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle InlineView
 
 
-# automatically prefill spotify-themes when opening new tab
-# $command = '&"could u run the spotify, mai-san?"'
-# Add-Type -AssemblyName System.Windows.Forms
-# [System.Windows.Forms.SendKeys]::SendWait("$command")
-
-
-# oh-my-posh
-
-# $style_path = 'C:\Users\toya\AppData\Local\Programs\oh-my-posh\themes\stelbent.minimal.omp.json'
-
-
-# $style_path = 'C:\Users\toya\AppData\Local\Programs\oh-my-posh\themes\mai.omp.json'
-
-$style_path = 'C:\Users\toya\AppData\Local\Programs\oh-my-posh\themes\mai-test.omp.json'
+$style_path = 'C:\Users\toya\AppData\Local\Programs\oh-my-posh\themes\mai.omp.json'
 
 $style_path_simple = 'C:\Users\toya\AppData\Local\Programs\oh-my-posh\themes\simple.omp.json'
-
-# $style_path = 'C:\Users\toya\AppData\Local\Programs\oh-my-posh\themes\catppuccin_macchiato.omp.json'
 
 function ompSimple {
   clear
   echo ""
   oh-my-posh init pwsh --config $style_path_simple | Invoke-Expression
 }
+
 oh-my-posh init pwsh --config $style_path | Invoke-Expression
 
 fastfetch
