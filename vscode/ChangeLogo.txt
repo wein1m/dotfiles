@@ -1,0 +1,24 @@
+$BASE_PATH=`C:\Users\$user\AppData\Local\Programs\Microsoft VS Code`
+"C:\Users\toya\AppData\Local\Programs\Microsoft VS Code\resources\app\out\vs\workbench"
+
+first, get the vsc installation path, which contain items like `Code.exe`, `unins000.exe`, etc.
+Example: $BASE_PATH
+
+If you wan to remove the logo,
+1. Go to `$BASE_PATH\resources\app\out\vs\workbench`
+2. Open the `workbench.desktop.main.css`
+3. Search for `.window-appicon`
+4. change `width:35px` to `width:0px`
+Done
+
+If you wat to change the logo,
+1. Go to `$BASE_PATH\resources\app\out\media`
+2. Then change the code-icon.svg with your custom logo.
+Done
+
+Source: https://stackoverflow.com/questions/72975748/how-to-disable-hide-the-vscode-logo-from-the-title-bar-upper-left-corner
+
+============
+   UPDATE
+============
+i've created a function inside profile .ps1, so u can just run `remove-vscLogo` on pwsh
