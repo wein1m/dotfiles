@@ -50,9 +50,10 @@ return {
     })
   end,
   opts = {
-    lang = "typescript", -- https://github.com/kawre/leetcode.nvim#lang
+    lang = "cpp", -- https://github.com/kawre/leetcode.nvim#lang
     storage = {
-      home = vim.g.iCloudSync .. "/leetcode",
+      home = vim.fn.stdpath("data") .. "/leetcode",
+      cache = vim.fn.stdpath("cache") .. "/leetcode",
     },
     description = {
       position = "left",
