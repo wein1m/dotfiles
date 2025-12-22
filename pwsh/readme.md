@@ -38,6 +38,7 @@ Below is a categorized overview of **everything** defined in my `profile.ps1`.
 * `rmdirs` — remove directories recursively (`rm -r -fo` wrapper)
 * `get-size` — show human‑readable directory size (`KiB`, `MiB`, `GiB`)
 * `gpath` — copy current working directory to clipboard
+- `whereis` - locate the executable file's path 
 
 ---
 

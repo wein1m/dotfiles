@@ -16,13 +16,6 @@ function clearl {
   fastfetch
 }
 
-
-# function touch {
-#   Param ( [string[]]$file )
-#   "" > $file
-#
-# }
-
 function touch {
   Param (
     [Parameter(ValueFromRemainingArguments = $true)]
@@ -160,9 +153,9 @@ function remove-vscLogo {
   $output_loc = "C:\Users\toya\AppData\Local\Programs\Microsoft VS Code\resources\app\out\vs\workbench\workbench.desktop.main.css"
 
   if ($notFocus) {
-    $input_loc = "D:\custom\vsc-settings\vscMode-nonFocus.css"
+    $input_loc = "D:\custom\vsc-settings\settings\vscMode-nonFocus.css"
   } else {
-    $input_loc = "D:\custom\vsc-settings\vsc-customcss.css"
+    $input_loc = "D:\custom\vsc-settings\settings\vsc-customcss.css"
   }
 
   try {
@@ -455,12 +448,36 @@ function cdd {
     )
 
   if (!$arg) {
-    write-host -foregroundColor Magenta "Invalid filename, bunny~";
+    write-host -foregroundColor Magenta "... atleast tell me where you're going, bun.";
     break;
   }
 
   try {
     cd $arg && ls;
+  }
+  catch {
+    write-host -foregroundColor Magenta "ERRORRR OCCURREDDD~~ $($_.Exception.Message)";
+  }
+}
+
+# hueh T_T the 'where' is already taken as an alias for Where-Obect, and idk how to delete an alias permanently,
+# soo.. just bear with 'whereis'🐰
+function whereis { 
+  param(
+    [string]$arg
+    )
+
+  if (!$arg) {
+    write-host -foregroundColor Magenta "huh? where's what?";
+    break;
+  }
+
+  try {
+    write-host (get-command $arg -errorAction stop).source;
+  }
+  catch [System.Management.Automation.CommandNotFoundException] {
+    write-host -foregroundColor Magenta "Cannot find '$($arg)'.";
+    write-host -foregroundColor Magenta "...It's not hiding. it just doesn't exist."
   }
   catch {
     write-host -foregroundColor Magenta "ERRORRR OCCURREDDD~~ $($_.Exception.Message)";
@@ -509,5 +526,9 @@ oh-my-posh init pwsh --config $style_path | Invoke-Expression
 
 fastfetch
 
+######## NOTE ########
+# to get what exception does the error thrown, use
+# write-host -foregroundColor cyan $_.Exception.GetType();
+######################
 echo "TODO: change command table into hash map in our shell project; play with pwsh get-process from manpage"
 
