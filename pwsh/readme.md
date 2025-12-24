@@ -62,7 +62,7 @@ also, don't forget to put the executable path to the PATH env or put it into var
 * `remove-vscLogo` — patch VS Code CSS to remove the logo at top left corner
 * `clangd` — generate `.clangd` config from predefined presets
 * `pwsh-big` — open Windows Terminal centered with large size (i usually use 80x17)
-- `komom` - start komorebi & yasb, support `-stop` or `-n` to stop them
+* `komom` — start komorebi & yasb, support `-stop` or `-n` to stop them
 
 ---
 
