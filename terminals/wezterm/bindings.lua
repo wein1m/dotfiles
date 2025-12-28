@@ -59,12 +59,9 @@ local keys = {
   { key = '[',          mods = 'CTRL|SHIFT', action = act.MoveTabRelative(-1) },
   { key = ']',          mods = 'CTRL|SHIFT', action = act.MoveTabRelative(1) },
 
-  -- tab: hide tab-bar
-  { key = '9',          mods = 'CTRL',       action = act.EmitEvent('tabs.toggle-tab-bar'), },
-
   -- window --
   -- window: spawn windows
-  { key = 'n',          mods = 'CTRL',       action = act.SpawnWindow },
+  { key = 'n',          mods = 'CTRL|SHIFT', action = act.SpawnWindow },
 
   -- window: zoom window
   {
@@ -134,28 +131,6 @@ local keys = {
   { key = 'd',        mods = 'CTRL', action = act.ScrollByLine(5) },
   { key = 'PageUp',   mods = 'NONE', action = act.ScrollByPage(-0.75) },
   { key = 'PageDown', mods = 'NONE', action = act.ScrollByPage(0.75) },
-
-  -- key-tables --
-  -- resizes fonts
-  {
-    key = 'f',
-    mods = 'LEADER',
-    action = act.ActivateKeyTable({
-      name = 'resize_font',
-      one_shot = false,
-      timemout_milliseconds = 1000,
-    }),
-  },
-  -- resize panes
-  {
-    key = 'p',
-    mods = 'LEADER',
-    action = act.ActivateKeyTable({
-      name = 'resize_pane',
-      one_shot = false,
-      timemout_milliseconds = 1000,
-    }),
-  },
 }
 
 -- stylua: ignore
