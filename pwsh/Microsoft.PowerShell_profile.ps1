@@ -26,20 +26,54 @@ function spotify { spicetify update } # Update Spicetify
 # ❥ My collection of lovely functions
 # ───────────────--------------------------------------------------------───────────────────────────🐰
 function clearl {
+    <#
+    .SYNOPSIS
+        Clear the terminal and run fastfetch to flex~
+    #>
   clear
   fastfetch
 }
 
+function ompSimple {
+    <#
+    .SYNOPSIS
+        Switch between omp configs (NotSimple -> Simple, and vice-versa)
+    #> 
+    param(
+        [Alias("n")]
+        [switch]$no
+    )
+
+    clear
+    echo ""
+
+    try {
+        if ($no) {
+            oh-my-posh init pwsh --config $style_path | Invoke-Expression
+        } else {
+            oh-my-posh init pwsh --config $style_path_simple | Invoke-Expression
+        }
+    }
+    catch {
+        Write-host -ForegroundColor Magenta "Encountered Error: $($_.Exception.Message)"
+    }   
+
+}
+
 function touch {
+    <#
+    .SYNOPSIS
+        Creates a new file with the specified name and extension
+    #>
     Param (
         [Parameter(ValueFromRemainingArguments = $true)]
         [string[]]$files
     )
 
     if ($files -le 0) {
-    write-host -foregroundColor Magenta 
-        "What? you want me to create a ghost file?.. give atleast one filename.. bad bunny."
-    break
+        write-host -foregroundColor Magenta 
+            "What? you want me to create a ghost file?.. give atleast one filename.. bad bunny."
+        break
     }
 
     foreach($file in $files) {
@@ -48,11 +82,37 @@ function touch {
 }
 
 function open {
+    <#
+    .SYNOPSIS
+        Open URL using Brave
+
+    .EXAMPLE 
+        open google.com
+
+        Open up google.com on Brave Browser
+    #> 
     Param ( [string[]]$url )
-    start brave $url
+    start-process brave $url
 }
 
 function search {
+    <#
+    .SYNOPSIS
+        Brave search with free‑form queries
+
+    .NOTES
+        Remember to change to whatever search engine you're enjoy using (or keep it brave if you want it too)
+        
+    .DESCRIPTION
+        Open up a new Brave browser instance if not yet opened, or opened a new tab if a brave browser has already opened.
+        You can typed the search queries without wrapping them using quotes or whatsoever, since it collects all the arguments
+        passed as a whoel string.
+
+    .EXAMPLE 
+        search why am i so handsome?
+
+        Open up Brave search for "why am i so handsome?"
+    #> 
     Param (
         [Parameter(Mandatory = $true, ValueFromRemainingArguments = $true)]
         [string[]]$query
@@ -64,6 +124,23 @@ function search {
 }
 
 function wtf {
+    <#
+    .SYNOPSIS
+        Search prefixed with “wtf …”
+
+    .NOTES
+        Remember to change to whatever search engine you're enjoy using (or keep it brave if you want it too)
+        
+    .DESCRIPTION
+        Open up a new Brave browser instance if not yet opened, or opened a new tab if a brave browser has already opened.
+        You can typed the search queries without wrapping them using quotes or whatsoever, since it collects all the arguments
+        passed as a whoel string.
+
+    .EXAMPLE 
+        wtf is printf in C
+
+        Open up Brave search for "wtf is printf in c"
+    #> 
     Param (
         [Parameter(Mandatory = $true, ValueFromRemainingArguments = $true)]
         [string[]]$query
@@ -75,6 +152,23 @@ function wtf {
 }
 
 function howtf {
+    <#
+    .SYNOPSIS
+        Search prefixed with “how tf …”
+
+    .NOTES
+        Remember to change to whatever search engine you're enjoy using (or keep it brave if you want it too)
+        
+    .DESCRIPTION
+        Open up a new Brave browser instance if not yet opened, or opened a new tab if a brave browser has already opened.
+        You can typed the search queries without wrapping them using quotes or whatsoever, since it collects all the arguments
+        passed as a whoel string.
+
+    .EXAMPLE 
+        howtf do i accept multiple arguments in pwsh
+
+        Open up Brave search for "how tf do i accept multiple arguments in pwsh"
+    #> 
     Param (
         [Parameter(Mandatory = $true, ValueFromRemainingArguments = $true)]
         [string[]]$query
@@ -86,6 +180,23 @@ function howtf {
 }
 
 function why {
+    <#
+    .SYNOPSIS
+        Search prefixed with “why …”
+
+    .NOTES
+        Remember to change to whatever search engine you're enjoy using (or keep it brave if you want it too)
+        
+    .DESCRIPTION
+        Open up a new Brave browser instance if not yet opened, or opened a new tab if a brave browser has already opened.
+        You can typed the search queries without wrapping them using quotes or whatsoever, since it collects all the arguments
+        passed as a whoel string.
+
+    .EXAMPLE 
+        why do i need to free memory after using malloc C
+
+        Open up Brave search for "why do i need to free memory after using malloc in C"
+    #> 
     Param (
         [Parameter(Mandatory = $true, ValueFromRemainingArguments = $true)]
         [string[]]$query
@@ -98,6 +209,25 @@ function why {
 
 
 function translate {
+    <#
+    .SYNOPSIS
+        Open Google Translate (EN -> ID), supports `-r` for reverse mode (ID -> EN)
+
+    .DESCRIPTION
+        Open up a new Brave browser instance if not yet opened, or opened a new tab if a brave browser has already opened.
+        You can typed the search queries without wrapping them using quotes or whatsoever, since it collects all the arguments
+        passed as a whoel string.
+
+    .EXAMPLE 
+        translate chicken
+
+        Open up Brave then search translation from EN to ID (chicken -> ayam)
+
+    .EXAMPLE 
+        translate -r ayam
+
+        Open up Brave then search translation from ID to EN (ayam -> chicken)
+    #> 
     [CmdletBinding()]
     Param (
         [Parameter(Mandatory, ValueFromRemainingArguments = $true)]
@@ -131,12 +261,6 @@ function download {
     python $pyScript $Url $Name $Path
 }
 
-function mkdird {
-    param( [string]$arg )
-
-    mkdir $arg && cd $arg
-}
-
 function compress {
     param(
         [Parameter(Mandatory = $true)][string]$input_path,
@@ -148,9 +272,21 @@ function compress {
     python $pyscript $input_path $output_path
 }
 
+function mkdird {
+    <#
+    .SYNOPSIS
+        Create a directory and immediately `cd` into it
+    #>
+    param( [string]$arg )
 
+    mkdir $arg && cd $arg
+}
 
 function remove-vscLogo {
+    <#
+    .SYNOPSIS
+        Remove the logo from Visual Studio Code titlebar.
+    #> 
     param(
         [alias("n")]
         [switch]$notFocus
@@ -175,6 +311,40 @@ function remove-vscLogo {
 
 
 function killall {
+    <#
+    .SYNOPSIS
+        Terminates user-session processes.
+    .DESCRIPTION
+        Retrieves all processes running in the current user session and groups them by process name.
+
+        For each process group, the function will prompt for confirmation before termination:
+        - [Y]   Kill the current process group
+        - [N]   Skip the current process group
+        - [A]   Kill all remaining process groups without further prompts
+
+        When the `-a` / `-killAll` switch is provided, all eligible processes are terminated immediately
+        without confirmation.
+
+    .PARAMETER EXCLUDE
+        A list of process names that should never be terminated.
+        This includes essential Windows processes and commonly running background utilities.
+
+    .PARAMETER killAll
+        Skips all confirmation prompts and immediately terminates every eligible process
+        in the current user session.
+
+        Alias: -a
+
+    .EXAMPLE
+        killall
+
+        Prompts for confirmation before terminating each group of processes.
+
+    .EXAMPLE
+        killall -a
+
+        Immediately terminates all eligible processes without prompting.
+    #>
     param(
         # most of these are proccesses that shouldn't be terminated
         [string[]]$EXCLUDE = @(
@@ -225,6 +395,10 @@ function killall {
 }
 
 function vscFocus {
+    <#
+    .SYNOPSIS
+        Switch Visual Studio Code config (focus -> normal, and vice-versa)
+    #> 
     param(
         [Alias("n")]
         [switch]$notFocus
@@ -256,22 +430,32 @@ function vscFocus {
 }
 
 function get-size {
+    <#
+        .SYNOPSIS
+            Calculate the total size of a directory with a formatting.
+
+        .DESCRIPTION
+            Recursivevely walks through the directory and sums up all the sizes.
+            The final sum will get formatted into human-readable format (MiB, GiB, etc).
+
+            By default, system files or hiddden are ignored unless you forced them :evil_face: using `-f`.
+    #>
     param(
-        [string]$arg = ".",
+        [string]$path = ".",
 
         [Alias("f")]
         [switch]$force
     )
 
     $params = @{
-        path=$arg
+        path=$path
         recurse=$true
     }
 
     if ($force) { $params.force = $true }
 
     try {
-        switch((ls @params |measure -sum Length).Sum) {
+        switch((ls @params | measure -sum Length).Sum) {
         {$_ -gt 1GB} {
             '{0:0.0} GiB' -f ($_/1GB)
             break
@@ -292,19 +476,21 @@ function get-size {
     }
 }
 
-function ompSimple {
-  clear
-  echo ""
-  oh-my-posh init pwsh --config $style_path_simple | Invoke-Expression
-}
-
 function get-func {
+    <#
+        .SYNOPSIS
+            Echo the definition of function that passed as an argument.
+
+        .DESCRIPTION
+            If you inputted your own command (such as vscFocus), then it'll output the code of that function.
+            If you inputted external command (such as get-childItem), then it'll output the whole definition.
+    #>
     Param( [string]$func )
 
     try {
-        get-content -erroraction stop function:$func
+        Get-Command $func -erroraction stop | Select-Object -ExpandProperty Definition
     }
-    catch [System.Management.Automation.ItemNotFoundException] {
+    catch [System.Management.Automation.CommandNotFoundException] {
         Write-host -ForegroundColor Yellow "Invalid Func Name, bunny... $($_.Exception.Message)"
     }
     catch {
@@ -313,6 +499,10 @@ function get-func {
 }
 
 function pwsh-big {
+    <#
+        .SYNOPSIS
+            Open up a 140x50 windows terminal in the center of the screen.
+    #>
     $cols = 140
     $rows = 50
 
@@ -333,6 +523,14 @@ function pwsh-big {
 }
 
 function clangd {
+    <#
+        .SYNOPSIS
+            Copying clangd configs (or any other configs, if you want) into current working directory.
+
+        .DESCRIPTION
+            Search through the config path for the $mode, if it's there, then copy it into the cwd, 
+            if there isn't any config that equal $mode, then give the list of available configs. 
+    #>
     Param(
         [Alias("make")]
         [string]$mode="minimal"
@@ -343,7 +541,8 @@ function clangd {
     try {
         if (test-path $file) {
             get-content $file | set-content "./.clangd"
-            write-host -foregroundColor Magenta ".clangd with the config of $($PSStyle.foreground.Blue)$mode $($PSSTyle.foreground.Magenta)has been successfully created~🎉"
+            write-host -foregroundColor Magenta 
+                ".clangd with the config of $($PSStyle.foreground.Blue)$mode $($PSSTyle.foreground.Magenta)has been successfully created~🎉"
         } else {
             $configs = (ls -file 'D:\custom\clangd-configs').name
 
@@ -359,6 +558,27 @@ function clangd {
 }
 
 function symlink {
+    <#
+        .SYNOPSIS
+            Create a symlink with a specified path and target.
+
+        .PARAMETER path
+            Specified that path or the filename of the symlink to be located.
+
+        .PARAMETER target
+            Specified the target of which will be used as the source of symlink.
+
+        .EXAMPLE
+            symlink ./Microsoft.PowerShell_profile.ps1 $profile
+
+            create a new symlink called Microsoft.PowerShell_profile.ps1 wit hthe source of ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1
+
+        .NOTES
+            honestly speaking, i almost never used symlinks at all, i only used it once or two,
+            and idk why but i thought i'll be using it quite often so i build this function.. but in fact,
+            after several weeks, i still haven't used it again.. so let me know if there's something
+            that's nice to be added.
+    #>
     Param(
         [string]$path=".",
         [string]$target=$(throw "forgot to add the target path, huh..")
@@ -438,6 +658,49 @@ function Get-FileMetaData {
 }
 
 function hr {
+    <#
+        .SYNOPSIS
+            A tools to create a horizontal lines in your terminal (same like <hr /> in html)
+        
+        .DESCRIPTION
+            A toosl to make a horizontal lines that can have a pattern that you can customized easily.
+
+            You can add normal ruler, like
+            > hr -
+            ------------- #till the end of your terminal window.
+
+            Or even combining other symbols!?
+            > hr = - =
+            ==============
+            --------------
+            ==============
+
+            > hr =* #
+            =*=*=*=*=*=*=*
+            ##############
+
+        .EXAMPLE 
+            hr
+            
+            ##############   # till your terminal window's end.
+        
+        .EXAMPLE
+            hr -
+
+            ------------- # till your terminal window's end.
+
+        .EXAMPLE
+            hr * - *
+
+            *************
+            -------------
+            *************
+        
+        .EXAMPLE
+            hr #-#
+
+            #-##-##-##-##-#
+    #>
     param(
         [Parameter(ValueFromRemainingArguments = $true)]
         [string[]]$chars = @("#")
@@ -455,6 +718,10 @@ function hr {
 }
 
 function cdd { 
+    <#
+        .SYNOPSIS
+            `cd` into a directory and automatically run `ls`
+    #>
     Param( [string] $arg )
 
     if (!$arg) {
@@ -473,6 +740,15 @@ function cdd {
 # hueh T_T the 'where' is already taken as an alias for Where-Obect, and idk how to delete an alias permanently,
 # soo.. just bear with 'whereis'🐰
 function whereis() { 
+    <#
+        .SYNOPSIS
+            Get the path of the argument's executable path.
+
+        .EXAMPLE
+            whereis nvim
+
+            ~/Program Files/Neovim/bin/nvim.exe
+    #>
     param( [string]$arg )
 
     if (!$arg) {
@@ -494,6 +770,10 @@ function whereis() {
 
 # tbh i dont know what to name this cuz komorebi seems too long, so~
 function komom {
+    <#
+    .SYNOPSIS
+        Toggle komorebi & yasb to be on/off.
+    #> 
     Param(
         [Alias('n')]
         [switch]$stop
@@ -537,7 +817,6 @@ function komom {
         Write-Host -ForegroundColor Magenta "HAHA!! $($_.Exception.Message)"
     }
 }
-
 
 # ❥ Shell & Prompt Configurations
 # ───────────────--------------------------------------------------------───────────────────────────🐰
