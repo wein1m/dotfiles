@@ -1,10 +1,20 @@
-# Wein's personal windows dotfiles 🐰
-My personal Windows-friendly dotfiles.  
-Originally made just as a backup in case I randomly decide to wipe my Windows for no reason(yes.. i've done that twice i think), but after seeing many cool Linux rices, I figured, how about me making a windows rice instead? it might be useful for others too. Even though most people would probably just switch to Linux instead.
+# Wein's personal Windows dotfiles 🐰
 
-Right now, there's no auto-installation scripts or setup tools. Everything is configured manually, but I might add something like that in the future.
+Minimal, Windows-friendly dotfiles focused on PowerShell, Wezterm, and other cool things.
 
-The part I like the most in this repo is the PowerShell Core `$PROFILE`, which contains most of my aliases, functions, and general configurations that make my daily workflow much easier.
+![Windots Overview](/screenshots/Terminal.webp)
+
+<details>
+<summary><b>The backstory🐇</b></summary>
+  
+My personal Windows-friendly dotfiles.    
+Originally made just as a backup in case I randomly decide to wipe my Windows for no reason(yes.. i've done that twice🫥), but after seeing many cool Linux rices, I figured, how about me making a windows rice instead? it might be useful for others too. Even though most people would probably just switch to Linux instead.  
+  
+Right now, there's no auto-installation scripts or setup tools. Everything is configured manually, but I might add something like that in the future.  
+  
+The part I like the most in this repo is the PowerShell Core `$PROFILE`, which contains most of my aliases, functions, and general configurations that make my daily workflow much easier.  
+
+</details>
 
 ## 🐇Features
 This github repo containing several configurations, including:
